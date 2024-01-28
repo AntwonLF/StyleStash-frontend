@@ -38,7 +38,7 @@ function App() {
             <>
               <VideoBackground /> 
               <Landing handleSignupOrLogin={handleSignupOrLogin}/>
-            </>
+        </>
           }
         />
         <Route path="/profile" element={
