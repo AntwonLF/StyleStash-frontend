@@ -45,7 +45,8 @@ const Closet = () => {
       setCloset(closetData);
       setClosetItems(closetData.items);
 
-      window.location.reload();
+      
+      // window.location.reload();
     } catch (error) {
       console.error('Error deleting item', error);
     }
