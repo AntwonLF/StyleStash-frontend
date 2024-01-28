@@ -5,7 +5,7 @@ import ItemCard from '../../components/ItemCard/ItemCard.jsx';
 import CategoryFilter from '../../components/CategoryFilter/CategoryFilter';
 import * as tokenService from '../../services/tokenService.js';
 import * as closetService from '../../services/closetService.js';
-import AddItemModal from '../../components/AddItemModal/AddItemModal.jsx';
+import ItemModal from '../../components/ItemModal/ItemModal.jsx';
 
 // Styling
 import './Closet.css';
@@ -15,11 +15,13 @@ const Closet = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [closetItems, setClosetItems] = useState([]);
   const navigate = useNavigate();
-  const [showAddItemModal, setShowAddItemModal] = useState(false);
+  const [showItemModal, setShowItemModal] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const categories = ['Footwear', 'Clothing', 'Accessories', 'Outerwear'];
 
   const handleCategorySelect = async (category) => {
+    setIsLoading(true);
     const lowerCaseCategory = category.toLowerCase();
     const closetId = tokenService.getClosetFromToken();
     try {
@@ -27,8 +29,11 @@ const Closet = () => {
       console.log('Items fetched:', items);
       setClosetItems(items);
       setSelectedCategory(category);
+      localStorage.setItem('selectedCategory', category);
     } catch (error) {
       console.error('Error fetching items by category', error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -47,6 +52,11 @@ const Closet = () => {
   }
 
   useEffect(() => {
+    const  savedCategory = localStorage.getItem('selectedCategory');
+    if (savedCategory) {
+      setSelectedCategory(savedCategory);
+    }
+
     const getCloset = async () => {
       const closetId = tokenService.getClosetFromToken();
       if (closetId) {
@@ -63,21 +73,40 @@ const Closet = () => {
       }
     };
     getCloset();
+    
+    return () => {
+      localStorage.removeItem('selectedCategory');
+    }
   }, []);
+
+  const handleBackButtonClick = () => {
+    setSelectedCategory(null);
+    localStorage.removeItem('selectedCategory', null);
+  }
 
   const navigateToItemDetails = (itemId) => {
     navigate(`/items/${itemId}`);
   };
 
   const handleAddItemButtonClick = () => {
-    setShowAddItemModal(true);
+    setShowItemModal(true);
   };
+
+  const refreshItemsAfterAdd = async () => {
+    if (selectedCategory){
+      await handleCategorySelect(selectedCategory);
+    }
+  }
 
   return (
     <div className="closet">
       <h1>My Closet</h1>
       <button onClick={handleAddItemButtonClick}>Add Item</button>
-      {selectedCategory === null ? (
+      
+      {isLoading ? (
+        <p>Loading...</p>
+      
+      ): selectedCategory === null ? (
         // Display category list when no category is selected
         <div className="category-list">
           {categories.map((category) => (
@@ -88,11 +117,11 @@ const Closet = () => {
             />
           ))}
         </div>
-      ) : (
+      ) : closetItems.length > 0 ? (
         // Display items when a category is selected
         <div className="selected-category">
           <h2>{selectedCategory}</h2>
-          <button onClick={() => setSelectedCategory(null)}>Back</button>
+          <button onClick={handleBackButtonClick}>Back</button>
           <div className="closet-items">
             {closetItems.map((item) => (
               <ItemCard
@@ -104,10 +133,18 @@ const Closet = () => {
             ))}
           </div>
         </div>
+      ) : (
+        <div className="no-items-message">
+        <h2>{selectedCategory}</h2>
+        <p>No items in this category.</p>
+        <button onClick={handleBackButtonClick}>Back</button>
+      </div>
       )}
-      {/* Add the AddItemModal component */}
-      {showAddItemModal && (
-        <AddItemModal show={showAddItemModal} onClose={() => setShowAddItemModal(false)} />
+      {showItemModal && (
+        <ItemModal 
+        show={showItemModal} 
+        onClose={() => setShowItemModal(false)} 
+        onItemAdded={refreshItemsAfterAdd}/>
       )}
     </div>
   );
