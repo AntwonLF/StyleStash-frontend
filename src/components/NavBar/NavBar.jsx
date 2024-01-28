@@ -11,7 +11,7 @@ const NavBar = ({ user, handleLogout }) => {
 
   return (
     <>
-      <button className="dropdownButton" onClick={toggleDropdown}>☰ Menu</button>
+      <button className="dropdown" onClick={toggleDropdown}>☰ Menu</button>
       {user ?
         <nav className={dropdownOpen ? "show" : ""}>
           <ul>
