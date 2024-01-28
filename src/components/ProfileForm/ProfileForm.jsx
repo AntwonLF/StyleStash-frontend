@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const ProfileForm = ({ profile, onUpdate }) => {
+const ProfileForm = ({ profile, onUpdate, onCancel }) => {
     const initialProfile = {
       name: profile.name || '', 
       location: profile.location || '',
@@ -29,10 +29,10 @@ const ProfileForm = ({ profile, onUpdate }) => {
       <input type="text" name="location" value={updatedProfile.location} onChange={handleChange} />
       <input type="text" name="currentStyle" value={updatedProfile.currentStyle} onChange={handleChange} />
       <input type="text" name="influences" value={updatedProfile.influences} onChange={handleChange} />
-      <button type="submit">Update Profile</button>
+      <button type="submit" className="button-spacing">Update Profile</button>
+      <button type="button" onClick={onCancel}>Cancel</button>
     </form>
   );
 };
 
-
-export default ProfileForm
+export default ProfileForm;

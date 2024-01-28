@@ -6,33 +6,37 @@
   height: 100vh;
   position: relative;
   text-align: center;
-  color: #fff; 
+  color: #ece4db29; 
 }
 
 .brand-container {
   max-width: 600px;
+  color: #C7C6BD; 
 }
 
 .brand-title {
   font-size: 4rem;
   margin-bottom: 0.5rem;
+  color: #F7F2EF; 
 }
 
 .brand-subtitle {
   font-size: 2rem; 
   margin-bottom: 1rem;
+  color: #C7C6BD; 
 }
 
 .brand-description {
   font-size: 1rem;
   margin-bottom: 2rem;
+  color: #ECE4DB; 
 }
 
 .toggle-button {
   margin-top: 20px;
   padding: 10px 20px;
-  background-color:#b19847 ;
-  color: white;
+  background-color: #5B382D; 
+  color: #F7F2EF;  
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -40,7 +44,7 @@
 }
 
 .toggle-button:hover {
-  background-color: #8f5901e2;
+  background-color: #9C6948; 
 }
 
 @media (max-width: 768px) {
@@ -48,6 +52,7 @@
       height: auto;
       margin: 20px;
       padding: 20px;
+      background-color: #c6ac9700; 
   }
   .toggle-button {
       font-size: 12px;

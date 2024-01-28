@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import * as authService from '../../services/authService'
 
+import './SignupForm.css'; 
+
+
 const SignupForm = props => {
   const [formData, setFormData] = useState({
     username: '',
@@ -83,7 +86,7 @@ const SignupForm = props => {
         />
       </div>
       <div className='signupbutton'>
-        <button disabled={isFormInvalid()}>
+        <button className='glow-on-hover' disabled={isFormInvalid()}>
           Sign Up
         </button>
       </div>

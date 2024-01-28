@@ -3,12 +3,13 @@ import * as tokenService from '../../services/tokenService.js';
 import * as profileService from '../../services/profileService.js';
 import ProfileForm from '../../components/ProfileForm/ProfileForm.jsx';
 
+import './Profile.css';
+
 const Profile = () => {
-  const [profile, setProfile] = useState(null); 
-  const [editing, setEditing] = useState(false)
+  const [profile, setProfile] = useState(null);
+  const [editing, setEditing] = useState(false);
 
   useEffect(() => {
-
     const getProfile = async () => {
       const profileId = tokenService.getProfileFromToken();
       if (profileId) {
@@ -16,31 +17,35 @@ const Profile = () => {
           const profileData = await profileService.getProfile(profileId);
           setProfile(profileData);
         } catch (error) {
-          console.error('Error fetching profile', error)
+          console.error('Error fetching profile', error);
         }
       } else {
-        console.log('No profile id in token')
+        console.log('No profile id in token');
       }
     };
+
     getProfile();
   }, []);
 
   const handleUpdate = async (updatedProfile) => {
     try {
       const profileId = tokenService.getProfileFromToken();
-      if (profileId)
+      if (profileId) {
         await profileService.updateProfile(profileId, updatedProfile);
         setProfile(updatedProfile);
         setEditing(false);
-    }
-    catch (error) {
+      }
+    } catch (error) {
       console.error('Error updating profile', error);
     }
-  }
+  };
 
-  
+  const handleCancel = () => {
+    setEditing(false);
+  };
+
   return (
-    <div>
+    <div className='profile-container'>
       {profile ? (
         <div className='profile'>
           <h1>{profile.name}</h1>
@@ -48,10 +53,10 @@ const Profile = () => {
           <h2>Current Style: {profile.currentStyle}</h2>
           <h2>Influences: {profile.influences}</h2>
           <button onClick={() => setEditing(true)}>Edit Profile</button>
-          {editing && <ProfileForm profile={profile} onUpdate={handleUpdate} />}
+          {editing && <ProfileForm profile={profile} onUpdate={handleUpdate} onCancel={handleCancel} />}
         </div>
       ) : (
-        <h1>Loading Profile...</h1>
+        <h1 className='loading-text'>Loading Profile...</h1>
       )}
     </div>
   );
