@@ -1,13 +1,13 @@
 import { useState } from 'react';
 
 import *  as authService from '../../services/authService'
-import './LoginForm.css'; 
+import './LoginForm.css';
 
 
 const LoginForm = props => {
-  const [formData, setFormData] = useState({ 
+  const [formData, setFormData] = useState({
     email: '',
-    password: '' 
+    password: ''
   });
 
   const handleChange = e => {
@@ -15,12 +15,12 @@ const LoginForm = props => {
       props.setMessage('');
     }
     const { name, value } = e.target;
-    setFormData({ 
-      ...formData, 
-      [name]: name === 'email' ? value.toLowerCase() : value 
+    setFormData({
+      ...formData,
+      [name]: name === 'email' ? value.toLowerCase() : value
     });
   };
-  
+
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -28,7 +28,7 @@ const LoginForm = props => {
       ...formData,
       email: formData.email.toLowerCase(),
     };
-  
+
     try {
       await authService.login(submissionData);
       props.handleSignupOrLogin();
@@ -36,12 +36,12 @@ const LoginForm = props => {
       props.setMessage(err.message);
     }
   };
-  
+
 
   return (
-    <form 
-    autoComplete="off"
-    onSubmit={handleSubmit}
+    <form
+      autoComplete="off"
+      onSubmit={handleSubmit}
     >
       <div>
         <input
@@ -64,10 +64,11 @@ const LoginForm = props => {
           onChange={handleChange}
           placeholder="Enter your password"
         />
-    </div>
-      <div>
-        <button>Log In</button>
       </div>
+      <div>
+        <button className="glow-on-hover">Log In</button>
+      </div>
+
     </form>
   );
 };
