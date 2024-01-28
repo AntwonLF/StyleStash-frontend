@@ -4,10 +4,12 @@ import { useNavigate } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
 
 
-
-import ItemDeets from '../../components/ItemDeets/ItemDeets.jsx'
+import ItemModal from '../../components/ItemModal/ItemModal.jsx'
 import * as tokenService from '../../services/tokenService.js'
 import * as itemService from '../../services/itemService.js'
+
+//css
+import './ItemDetails.css'
 
 
 
@@ -15,7 +17,8 @@ const ItemDetails = () => {
   const {itemId} = useParams() 
   console.log(itemId)
   const [itemDetail, setItemDetail] = useState(null)
-  const [editing, setEditing] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const navigate = useNavigate()
 
 useEffect(() => {
   const getItemDetails = async () => {
@@ -24,6 +27,18 @@ useEffect(() => {
   } 
   getItemDetails()
 }, [itemId])
+
+const handleEditButtonClick = () => {
+  setIsModalOpen(!isModalOpen)
+}
+
+const updateItemDetail = (updatedData) => {
+  setItemDetail(updatedData);
+};
+
+const handleBackButtonClick = () => {
+  navigate(-1)
+}
 
 return (
   <div className="item-details">
@@ -39,6 +54,16 @@ return (
         <div><strong>Notes:</strong> {itemDetail.notes || 'N/A'}</div>
         {itemDetail.imageUrl && (
           <img src={itemDetail.imageUrl} alt="Item" style={{ maxWidth: '200px' }} />
+        )}
+        <button onClick={handleBackButtonClick}>Back</button>
+        <button onClick={handleEditButtonClick}>Edit</button>
+        {isModalOpen && (
+          <ItemModal
+            item={itemDetail}
+            onClose={handleEditButtonClick}
+            itemToEdit={itemDetail}
+            onUpdated={updateItemDetail}
+          />
         )}
       </>
     ) : (

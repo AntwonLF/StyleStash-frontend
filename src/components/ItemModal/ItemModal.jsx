@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import * as closetService from '../../services/closetService.js'
 import * as tokenService from '../../services/tokenService.js'
+import * as itemService from '../../services/itemService.js'
 
-const AddItemModal = ({ show, onClose }) => {
-  const [formData, setFormData] = useState({
+
+const ItemModal = ({ show, onClose, itemToEdit, onUpdated, onItemAdded }) => {
+  const initialFormData = {
     category: '',
     color: '',
     type: '',
@@ -12,11 +14,20 @@ const AddItemModal = ({ show, onClose }) => {
     wearCount: '',
     notes: '',
     imageUrl: '',
-  });
+  };
 
-  // Define options for category and wearcount
+  const [formData, setFormData] = useState(initialFormData);
+
+  // Initialize or reset form data based on itemToEdit
+  useEffect(() => {
+    if (itemToEdit) {
+      setFormData(itemToEdit);
+    } else {
+      setFormData(initialFormData);
+    }
+  }, [itemToEdit]);
+
   const categoryOptions = ['outerwear', 'footwear', 'clothing', 'accessories'];
-
   const wearCountOptions = ['often', 'rarely', 'special occasion'];
 
   const handleInputChange = (e) => {
@@ -26,20 +37,31 @@ const AddItemModal = ({ show, onClose }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const closetId = tokenService.getClosetFromToken()
-
+    const closetId = tokenService.getClosetFromToken();
     try {
-      await closetService.addItem(formData, closetId); 
-      onClose();
+      if (itemToEdit) {
+        // Update existing item
+        await itemService.updateItem(itemToEdit._id, formData);
+        onUpdated(formData);
+        onClose();
+      } else {
+        // Add new item
+        await closetService.addItem(formData, closetId);
+        if(onItemAdded) {
+          onItemAdded();
+        }
+        onClose(); 
+      }
+      
     } catch (error) {
-      console.error('Error adding item:', error);
+      console.error('Error processing item:', error);
     }
   };
 
   return (
     <div className={`modal ${show ? 'show' : 'hide'}`}>
       <div className='modal-content'>
-        <h2>Add Item</h2>
+        <h2>{itemToEdit ? 'Edit Item' : 'Add Item'}</h2>
         <form onSubmit={handleSubmit}>
           <div className='form-data'>
             <label htmlFor='category'>Category:</label>
@@ -136,7 +158,8 @@ const AddItemModal = ({ show, onClose }) => {
               onChange={handleInputChange}
             />
           </div>
-          <button type='submit'>Add Item</button>
+          <button type='submit'>{itemToEdit ? 'Update Item' : 'Add Item'}</button>
+
         </form>
         <button onClick={onClose}>Close</button>
       </div>
@@ -144,4 +167,4 @@ const AddItemModal = ({ show, onClose }) => {
   );
 };
 
-export default AddItemModal;
+export default ItemModal;
