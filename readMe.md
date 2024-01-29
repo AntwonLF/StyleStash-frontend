@@ -59,6 +59,31 @@ tokenService
 images
 assets
 
+MVP - User Stories
+The MVP of StyleStash is designed with the following user stories in mind, ensuring a user-centric and functional experience:
+
+Account Signup:
+
+As a user, I would like to sign up for an account so that I can have a personal and secure experience.
+User Profile:
+
+As a user, I would like to have a profile to personalize my experience and manage my information.
+Manage Wardrobe Items:
+
+As a user, I would like to add, view, delete, and update items in my closet to keep my wardrobe inventory current and accurate.
+Categorized Closet Organization:
+
+As a user, I would like my closet to be separated into four categories: Outerwear, Clothing, Accessories, and Footwear for easy organization and retrieval.
+Ice Box
+In future iterations of StyleStash, we plan to introduce additional features to enhance user experience. These are currently in our Ice Box:
+
+Favorites Feature:
+
+As a user, I would like to be able to favorite items and view these items in a favorites list, enabling me to quickly access the items I love the most.
+Wardrobe Statistics:
+
+As a user, I would like to see statistics of my wardrobe, such as the distribution of colors, types of items, and usage frequency, to gain insights and make informed decisions about my fashion choices.
+
 ## Contribution
 Follow the coding conventions and practices as outlined in the project's guidelines.
 For new features or bug fixes, create a separate branch away from main and dev.
