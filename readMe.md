@@ -1,6 +1,6 @@
 ## StyleStash Front-End
 
-![image](https://github.com/AntwonLF/StyleStash-frontend/assets/150071971/6bc71106-d92f-411c-8fe6-832722e2e86e)
+<img width="1241" alt="Screenshot 2024-01-29 at 9 17 09 AM" src="https://github.com/AntwonLF/StyleStash-frontend/assets/150071971/a6a198e6-0cc0-4f95-806d-17e40a4ee856">
 
 # Overview
 StyleStash is an interactive, user-friendly application for managing a virtual closet. It combines a sleek UI with powerful features for organizing and visualizing clothing items.
