@@ -1,0 +1,29 @@
+.video-background {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -100;
+    object-fit: cover;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 0;
+}
+
+@media screen and (max-width: 600px) {
+    .navbar a {
+        display: none;
+    }
+
+    .navbar .dropdownButton {
+        display: block;
+    }
+}

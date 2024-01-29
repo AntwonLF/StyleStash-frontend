@@ -1,0 +1,95 @@
+.closet {
+  font-family: Arial, sans-serif;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  box-shadow: 0 2px 4px #5B382D;
+  border-radius: 8px;
+  background-color: #F7F2EF;
+  color: beige;
+
+}
+
+.closet h1 {
+  color: #333;
+  text-align: center;
+}
+
+.closet h2 {
+  color: #333;
+  text-align: center;
+}
+
+
+
+.button {
+  display: block;
+  margin: 10px auto;
+  padding: 10px 20px;
+  background-color: beige;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: auto;
+}
+
+button.category-button {
+  display: block;
+  margin: 10px auto;
+  padding: 10px 20px;
+  background-color: #5B382D;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: auto;
+}
+
+.button:hover {
+  background-color: #0056b3;
+}
+
+.category-list,
+.selected-category,
+.no-items-message {
+  margin-top: 20px;
+}
+
+.category-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+
+
+.selected-category h2,
+.no-items-message h2 {
+  text-align: center;
+  color: #666;
+}
+
+
+.closet-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.no-items-message p {
+  text-align: center;
+}
+
+
+.item-card {
+  border: 1px solid #2a3226;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.item-card:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}

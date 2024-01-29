@@ -1,0 +1,93 @@
+.landing-page html,
+.landing-page body {
+  overflow: hidden;
+}
+
+
+
+.landing-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  max-height: 100vh;
+  position: relative;
+  text-align: center;
+  color: #ece4db29;
+  overflow: auto;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.brand-container {
+  max-width: 600px;
+  color: #C7C6BD;
+}
+
+.brand-title {
+  font-size: 4rem;
+  margin-bottom: 0.5rem;
+  color: #F7F2EF;
+}
+
+.brand-subtitle {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #C7C6BD;
+}
+
+.brand-description {
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  color: #ECE4DB;
+}
+
+.toggle-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #5B382D;
+  color: #F7F2EF;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  width: auto;
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+
+.toggle-button:hover {
+  background-color: #9C6948;
+}
+
+@media (max-width: 768px) {
+  .landing-container {
+    height: auto;
+    max-height: 100vh;
+    overflow: auto;
+    margin: 20px;
+    padding: 20px;
+    background-color: #c6ac9700;
+  }
+
+  .toggle-button {
+    font-size: 12px;
+    padding: 10px;
+  }
+
+  .brand-title {
+    font-size: 2.5rem;
+  }
+
+  .brand-subtitle {
+    font-size: 1.5rem;
+  }
+}
