@@ -15,7 +15,7 @@ const Closet = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [closetItems, setClosetItems] = useState([]);
   const navigate = useNavigate();
-  const [showItemModal, setShowItemModal] = useState(false);
+  const [ShowModal, setShowModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   const categories = ['Footwear', 'Clothing', 'Accessories', 'Outerwear'];
@@ -45,9 +45,8 @@ const Closet = () => {
       setCloset(closetData);
       setClosetItems(closetData.items);
 
-      
-      // window.location.reload();
-    } catch (error) {
+      setSelectedCategory(null);
+    } catch (error) {   
       console.error('Error deleting item', error);
     }
   }
@@ -90,7 +89,7 @@ const Closet = () => {
   };
 
   const handleAddItemButtonClick = () => {
-    setShowItemModal(true);
+    setShowModal(true);
   };
 
   const refreshItemsAfterAdd = async () => {
@@ -102,8 +101,10 @@ const Closet = () => {
   return (
     <div className="closet">
       <h1>My Closet</h1>
+      <div className='add-item-button'>
       <button onClick={handleAddItemButtonClick}>Add Item</button>
-      
+      </div>
+
       {isLoading ? (
         <p>Loading...</p>
       
@@ -141,10 +142,10 @@ const Closet = () => {
         <button onClick={handleBackButtonClick}>Back</button>
       </div>
       )}
-      {showItemModal && (
+      {ShowModal && (
         <ItemModal 
-        show={showItemModal} 
-        onClose={() => setShowItemModal(false)} 
+        show={ShowModal} 
+        onClose={() => setShowModal(false)} 
         onItemAdded={refreshItemsAfterAdd}/>
       )}
     </div>

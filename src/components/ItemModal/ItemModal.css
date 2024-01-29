@@ -1,0 +1,25 @@
+/* Overlay that covers the entire screen */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    z-index: 1000; /* High z-index */
+    display: none; /* Hidden by default */
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Show overlay when modal is open */
+  .modal-overlay.show {
+    display: flex;
+  }
+  
+  /* Modal styling */
+  .modal {
+    position: fixed;
+    background-color: #C6AC97;
+    z-index: 1001; 
+  }
