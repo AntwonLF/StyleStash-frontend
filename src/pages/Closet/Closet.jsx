@@ -108,7 +108,7 @@ const Closet = () => {
         <p>Loading...</p>
       
       ): selectedCategory === null ? (
-        // Display category list when no category is selected
+      
         <div className="category-list">
           {categories.map((category) => (
             <CategoryFilter
@@ -119,7 +119,6 @@ const Closet = () => {
           ))}
         </div>
       ) : closetItems.length > 0 ? (
-        // Display items when a category is selected
         <div className="selected-category">
           <h2>{selectedCategory}</h2>
           <button onClick={handleBackButtonClick}>Back</button>
