@@ -3,6 +3,7 @@ import * as closetService from '../../services/closetService.js'
 import * as tokenService from '../../services/tokenService.js'
 import * as itemService from '../../services/itemService.js'
 
+import './ItemModal.css';
 
 const ItemModal = ({ show, onClose, itemToEdit, onUpdated, onItemAdded }) => {
   const initialFormData = {
@@ -59,6 +60,7 @@ const ItemModal = ({ show, onClose, itemToEdit, onUpdated, onItemAdded }) => {
   };
 
   return (
+    <div className={`modal-overlay ${show ? 'show' : ''}`}>
     <div className={`modal ${show ? 'show' : 'hide'}`}>
       <div className='modal-content'>
         <h2>{itemToEdit ? 'Edit Item' : 'Add Item'}</h2>
@@ -163,6 +165,7 @@ const ItemModal = ({ show, onClose, itemToEdit, onUpdated, onItemAdded }) => {
         </form>
         <button onClick={onClose}>Close</button>
       </div>
+    </div>
     </div>
   );
 };

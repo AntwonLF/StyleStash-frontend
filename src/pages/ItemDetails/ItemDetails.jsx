@@ -17,7 +17,7 @@ const ItemDetails = () => {
   const {itemId} = useParams() 
   console.log(itemId)
   const [itemDetail, setItemDetail] = useState(null)
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [ShowModal, setShowModal] = useState(false)
   const navigate = useNavigate()
 
 useEffect(() => {
@@ -29,7 +29,7 @@ useEffect(() => {
 }, [itemId])
 
 const handleEditButtonClick = () => {
-  setIsModalOpen(!isModalOpen)
+  setShowModal(!ShowModal)
 }
 
 const updateItemDetail = (updatedData) => {
@@ -57,9 +57,10 @@ return (
         )}
         <button onClick={handleBackButtonClick}>Back</button>
         <button onClick={handleEditButtonClick}>Edit</button>
-        {isModalOpen && (
+        {ShowModal && (
           <ItemModal
-            item={itemDetail}
+            show={ShowModal}
+          item={itemDetail}
             onClose={handleEditButtonClick}
             itemToEdit={itemDetail}
             onUpdated={updateItemDetail}
