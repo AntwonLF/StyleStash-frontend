@@ -25,16 +25,16 @@ const VideoBackground = ({ playInReverse = false }) => {
         if (video.currentTime <= 0.1) {
           video.pause();
           clearInterval(intervalId);
-          setAllowPlay(false); // Ensures video stops after playing in reverse
+          setAllowPlay(false);
         } else {
           video.currentTime -= decrementAmount;
         }
       };
 
-      video.pause(); // Make sure to pause before setting the interval
+      video.pause();
       intervalId = setInterval(handleReversePlayback, intervalDuration);
     } else {
-      // Reset video to start only if allowed to play
+
       if (allowPlay) {
         video.currentTime = 0;
         video.play().catch(error => console.error("Video play failed", error));
@@ -48,9 +48,9 @@ const VideoBackground = ({ playInReverse = false }) => {
   }, [playInReverse, allowPlay]);
 
   useEffect(() => {
-    // Reset allowPlay when component unmounts or resets
+
     return () => {
-      setAllowPlay(true); 
+      setAllowPlay(true);
     };
   }, []);
 

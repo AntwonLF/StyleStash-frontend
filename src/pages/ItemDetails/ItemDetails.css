@@ -3,69 +3,69 @@
     max-width: 600px;
     margin: 20px auto;
     padding: 20px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
-    background-color: #F7F2EF; 
-    color: #C7C6BD; 
-  }
-  
-  .item-details h2 {
-    color: #5B382D; 
-    border-bottom: 2px solid #C7C6BD; 
+    background-color: #F7F2EF;
+    color: #595a57;
+}
+
+.item-details h2 {
+    color: #5B382D;
+    border-bottom: 2px solid #C7C6BD;
     padding-bottom: 10px;
     margin-bottom: 20px;
-  }
-  
-  .item-details div {
+}
+
+.item-details div {
     margin-bottom: 10px;
-  }
-  
-  .item-details strong {
-    color: #9C6948; 
-  }
-  
-  .item-details img {
+}
+
+.item-details strong {
+    color: #9C6948;
+}
+
+.item-details img {
     display: block;
     margin: 20px 0;
     max-width: 200px;
     height: auto;
     border-radius: 4px;
-    border: 2px solid #C6AC97; 
-  }
-  
-  button {
-    background-color: #5B382D; 
-    color: #ECE4DB; 
+    border: 2px solid #C6AC97;
+}
+
+button {
+    background-color: #5B382D;
+    color: #ECE4DB;
     border: none;
     padding: 10px 15px;
+    margin: 5px;
     margin-right: 10px;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
     width: auto;
-  }
-  
-  button:hover {
-    background-color: #2D2E25; 
-  }
-  
-  button:focus {
+}
+
+button:hover {
+    background-color: #2D2E25;
+}
+
+button:focus {
     outline: none;
-    box-shadow: 0 0 0 2px #C7C6BD; 
-  }
+    box-shadow: 0 0 0 2px #C7C6BD;
+}
 
-  .button-container {
+.button-container {
     display: flex;
-    justify-content: start; 
-    gap: 20px; 
-  }
-  
+    justify-content: start;
+    gap: 20px;
+}
 
-  .loading-container {
+
+.loading-container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #C7C6BD; 
-  }
-  
+    background-color: #C7C6BD;
+}

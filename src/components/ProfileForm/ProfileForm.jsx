@@ -1,14 +1,14 @@
 import { useState } from 'react';
 
 const ProfileForm = ({ profile, onUpdate, onCancel }) => {
-    const initialProfile = {
-      name: profile.name || '', 
-      location: profile.location || '',
-      currentStyle: profile.currentStyle || '',
-      influences: profile.influences || '',
-    };
-  
-    const [updatedProfile, setUpdatedProfile] = useState(initialProfile);
+  const initialProfile = {
+    name: profile.name || '',
+    location: profile.location || '',
+    currentStyle: profile.currentStyle || '',
+    influences: profile.influences || '',
+  };
+
+  const [updatedProfile, setUpdatedProfile] = useState(initialProfile);
 
   const handleChange = (event) => {
     const { name, value } = event.target;

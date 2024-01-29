@@ -7,7 +7,7 @@ import * as tokenService from '../../services/tokenService.js';
 import * as closetService from '../../services/closetService.js';
 import ItemModal from '../../components/ItemModal/ItemModal.jsx';
 
-// Styling
+
 import './Closet.css';
 
 const Closet = () => {
@@ -45,7 +45,7 @@ const Closet = () => {
       setCloset(closetData);
       setClosetItems(closetData.items);
 
-      
+
       setSelectedCategory(null);
     } catch (error) {
       console.error('Error deleting item', error);
@@ -53,7 +53,7 @@ const Closet = () => {
   }
 
   useEffect(() => {
-    const  savedCategory = localStorage.getItem('selectedCategory');
+    const savedCategory = localStorage.getItem('selectedCategory');
     if (savedCategory) {
       setSelectedCategory(savedCategory);
     }
@@ -74,7 +74,7 @@ const Closet = () => {
       }
     };
     getCloset();
-    
+
     return () => {
       localStorage.removeItem('selectedCategory');
     }
@@ -94,7 +94,7 @@ const Closet = () => {
   };
 
   const refreshItemsAfterAdd = async () => {
-    if (selectedCategory){
+    if (selectedCategory) {
       await handleCategorySelect(selectedCategory);
     }
   }
@@ -103,14 +103,14 @@ const Closet = () => {
     <div className="closet">
       <h1>My Closet</h1>
       <div className='add-item-button'>
-      <button onClick={handleAddItemButtonClick}>Add Item</button>
+        <button onClick={handleAddItemButtonClick}>Add Item</button>
       </div>
 
       {isLoading ? (
         <p>Loading...</p>
-      
-      ): selectedCategory === null ? (
-      
+
+      ) : selectedCategory === null ? (
+
         <div className="category-list">
           {categories.map((category) => (
             <CategoryFilter
@@ -137,16 +137,16 @@ const Closet = () => {
         </div>
       ) : (
         <div className="no-items-message">
-        <h2>{selectedCategory}</h2>
-        <p>No items in this category.</p>
-        <button onClick={handleBackButtonClick}>Back</button>
-      </div>
+          <h2>{selectedCategory}</h2>
+          <p>No items in this category.</p>
+          <button onClick={handleBackButtonClick}>Back</button>
+        </div>
       )}
       {ShowModal && (
-        <ItemModal 
-        show={ShowModal} 
-        onClose={() => setShowModal(false)} 
-        onItemAdded={refreshItemsAfterAdd}/>
+        <ItemModal
+          show={ShowModal}
+          onClose={() => setShowModal(false)}
+          onItemAdded={refreshItemsAfterAdd} />
       )}
     </div>
   );

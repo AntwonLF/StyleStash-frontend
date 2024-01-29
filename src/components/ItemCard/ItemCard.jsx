@@ -3,9 +3,8 @@ import './ItemCard.css'
 
 const ItemCard = ({ item, handleItemSelect, handleDelete }) => {
 
-  // Function to stop event propagation
   const handleDeleteClick = (e) => {
-    e.stopPropagation(); // This prevents the event from bubbling up to the parent
+    e.stopPropagation();
     handleDelete(item._id);
   };
 

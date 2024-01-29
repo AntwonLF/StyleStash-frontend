@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import * as authService from '../../services/authService'
 
-import './SignupForm.css'; 
+import './SignupForm.css';
 
 
 const SignupForm = props => {
@@ -17,11 +17,11 @@ const SignupForm = props => {
     }
     const { name, value } = e.target;
     setFormData({
-      ...formData, 
+      ...formData,
       [name]: name === 'email' ? value.toLowerCase() : value
     });
   };
-  
+
 
 
   const handleSubmit = async e => {
@@ -30,7 +30,7 @@ const SignupForm = props => {
       ...formData,
       email: formData.email.toLowerCase(),
     };
-  
+
     try {
       await authService.signup(submissionData);
       props.handleSignupOrLogin();
@@ -38,7 +38,7 @@ const SignupForm = props => {
       props.setMessage(err.message);
     }
   }
-  
+
 
   const { username, email, password } = formData
 

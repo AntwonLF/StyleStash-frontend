@@ -1,20 +1,20 @@
-
 .closet {
   font-family: Arial, sans-serif;
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 20px;
-    box-shadow: 0 2px 4px #5B382D;
-    border-radius: 8px;
-    background-color: #F7F2EF; 
-    color: #2D2E25; 
-    
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  box-shadow: 0 2px 4px #5B382D;
+  border-radius: 8px;
+  background-color: #F7F2EF;
+  color: beige;
+
 }
 
 .closet h1 {
   color: #333;
   text-align: center;
 }
+
 .closet h2 {
   color: #333;
   text-align: center;
@@ -26,7 +26,7 @@
   display: block;
   margin: 10px auto;
   padding: 10px 20px;
-  background-color: beige; 
+  background-color: beige;
   color: white;
   border: none;
   border-radius: 5px;
@@ -38,7 +38,7 @@ button.category-button {
   display: block;
   margin: 10px auto;
   padding: 10px 20px;
-  background-color: #5B382D; 
+  background-color: #5B382D;
   color: white;
   border: none;
   border-radius: 5px;
@@ -47,10 +47,12 @@ button.category-button {
 }
 
 .button:hover {
-  background-color: #0056b3; 
+  background-color: #0056b3;
 }
 
-.category-list, .selected-category, .no-items-message {
+.category-list,
+.selected-category,
+.no-items-message {
   margin-top: 20px;
 }
 
@@ -63,7 +65,8 @@ button.category-button {
 
 
 
-.selected-category h2, .no-items-message h2 {
+.selected-category h2,
+.no-items-message h2 {
   text-align: center;
   color: #666;
 }
@@ -71,8 +74,8 @@ button.category-button {
 
 .closet-items {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); 
-  gap: 10px; 
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px;
   margin-top: 20px;
 }
 
@@ -82,11 +85,11 @@ button.category-button {
 
 
 .item-card {
-  border: 1px solid #2a3226; 
+  border: 1px solid #2a3226;
   padding: 10px;
   border-radius: 5px;
 }
 
 .item-card:hover {
-  box-shadow: 0 0 10px rgba(0,0,0,0.1); 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }

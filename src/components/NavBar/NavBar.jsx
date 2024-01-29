@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import './NavBar.css'; 
+import './NavBar.css';
 
 const NavBar = ({ user, handleLogout }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -20,7 +20,7 @@ const NavBar = ({ user, handleLogout }) => {
             <li><Link to="" onClick={handleLogout}>Log Out</Link></li>
           </ul>
         </nav>
-      :
+        :
         <nav className={dropdownOpen ? "dropdown-menu show" : "dropdown-menu"}>
           <ul>
             <li><Link to="/">Home</Link></li>

@@ -8,7 +8,7 @@ import ItemModal from '../../components/ItemModal/ItemModal.jsx'
 import * as tokenService from '../../services/tokenService.js'
 import * as itemService from '../../services/itemService.js'
 
-//css
+
 import './ItemDetails.css'
 
 
@@ -28,9 +28,9 @@ const ItemDetails = () => {
     getItemDetails()
   }, [itemId])
 
-const handleEditButtonClick = () => {
-  setShowModal(!ShowModal)
-}
+  const handleEditButtonClick = () => {
+    setShowModal(!ShowModal)
+  }
 
   const updateItemDetail = (updatedData) => {
     setItemDetail(updatedData);
@@ -40,38 +40,38 @@ const handleEditButtonClick = () => {
     navigate(-1)
   }
 
-return (
-  <div className="item-details">
-    {itemDetail ? (
-      <>
-        <h2>Item Details</h2>
-        <div><strong>Category:</strong> {itemDetail.category}</div>
-        <div><strong>Color:</strong> {itemDetail.color || 'N/A'}</div>
-        <div><strong>Type:</strong> {itemDetail.type || 'N/A'}</div>
-        <div><strong>Size:</strong> {itemDetail.size || 'N/A'}</div>
-        <div><strong>Brand:</strong> {itemDetail.brand || 'N/A'}</div>
-        <div><strong>Wear Count:</strong> {itemDetail.wearCount || 'N/A'}</div>
-        <div><strong>Notes:</strong> {itemDetail.notes || 'N/A'}</div>
-        {itemDetail.imageUrl && (
-          <img src={itemDetail.imageUrl} alt="Item" style={{ maxWidth: '200px' }} />
-        )}
-        <button onClick={handleBackButtonClick}>Back</button>
-        <button onClick={handleEditButtonClick}>Edit</button>
-        {ShowModal && (
-          <ItemModal
-            show={ShowModal}
-          item={itemDetail}
-            onClose={handleEditButtonClick}
-            itemToEdit={itemDetail}
-            onUpdated={updateItemDetail}
-          />
-        )}
-      </>
-    ) : (
-      <div>Loading...</div>
-    )}
-  </div>
-);
+  return (
+    <div className="item-details">
+      {itemDetail ? (
+        <>
+          <h2>Item Details</h2>
+          <div><strong>Category:</strong> {itemDetail.category}</div>
+          <div><strong>Color:</strong> {itemDetail.color || 'N/A'}</div>
+          <div><strong>Type:</strong> {itemDetail.type || 'N/A'}</div>
+          <div><strong>Size:</strong> {itemDetail.size || 'N/A'}</div>
+          <div><strong>Brand:</strong> {itemDetail.brand || 'N/A'}</div>
+          <div><strong>Wear Count:</strong> {itemDetail.wearCount || 'N/A'}</div>
+          <div><strong>Notes:</strong> {itemDetail.notes || 'N/A'}</div>
+          {itemDetail.imageUrl && (
+            <img src={itemDetail.imageUrl} alt="Item" style={{ maxWidth: '200px' }} />
+          )}
+          <button onClick={handleBackButtonClick}>Back</button>
+          <button onClick={handleEditButtonClick}>Edit</button>
+          {ShowModal && (
+            <ItemModal
+              show={ShowModal}
+              item={itemDetail}
+              onClose={handleEditButtonClick}
+              itemToEdit={itemDetail}
+              onUpdated={updateItemDetail}
+            />
+          )}
+        </>
+      ) : (
+        <div>Loading...</div>
+      )}
+    </div>
+  );
 
 }
 

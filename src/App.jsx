@@ -21,29 +21,29 @@ function App() {
   function handleLogout() {
     authService.logout();
     setUser(null);
-    setPlayVideoInReverse(true); 
+    setPlayVideoInReverse(true);
     const videoPlaybackTime = 5000
     setTimeout(() => {
       setPlayVideoInReverse(false);
       navigate('/');
     }, videoPlaybackTime);
   }
-  
+
   function handleSignupOrLogin() {
     setUser(authService.getUser());
     navigate('/profile');
   }
-  
+
   return (
     <>
       <NavBar user={user} handleLogout={handleLogout} />
       <Routes>
-        <Route 
-          path="/" 
+        <Route
+          path="/"
           element={
-             <>
-              <VideoBackground playInReverse={playVideoInReverse} /> 
-              <Landing handleSignupOrLogin={handleSignupOrLogin}/>
+            <>
+              <VideoBackground playInReverse={playVideoInReverse} />
+              <Landing handleSignupOrLogin={handleSignupOrLogin} />
             </>
           }
         />

@@ -9,7 +9,7 @@ async function getItem(itemId) {
 
     try {
         const res = await axios.get(`${BASE_URL}/${itemId}`, {
-            headers : {'Authorization':`Bearer ${tokenService.getToken()}`}
+            headers: { 'Authorization': `Bearer ${tokenService.getToken()}` }
         })
         return res.data
     } catch (error) {
@@ -18,11 +18,11 @@ async function getItem(itemId) {
     }
 }
 
-async function updateItem(itemId, updatedItemData){
+async function updateItem(itemId, updatedItemData) {
     try {
-       const res = await axios.put(`${BASE_URL}/updateItem/${itemId}`, updatedItemData, {
-           headers: {'Authorization': `Bearer ${tokenService.getToken()}`}
-       }) 
+        const res = await axios.put(`${BASE_URL}/updateItem/${itemId}`, updatedItemData, {
+            headers: { 'Authorization': `Bearer ${tokenService.getToken()}` }
+        })
     } catch (error) {
         console.error(error)
         throw error

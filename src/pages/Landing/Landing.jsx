@@ -7,7 +7,7 @@ import './Landing.css'
 
 const Landing = ({ handleSignupOrLogin }) => {
   const [message, setMessage] = useState('');
-  const [currentForm, setcurrentForm] = useState('login'); // Tracks the current form
+  const [currentForm, setcurrentForm] = useState('login');
 
   return (
     <div className="landing-container">
@@ -19,15 +19,15 @@ const Landing = ({ handleSignupOrLogin }) => {
         </p>
       </div>
       {currentForm === 'login' ? (
-        <LoginForm 
-          message={message} 
+        <LoginForm
+          message={message}
           setMessage={setMessage}
           handleSignupOrLogin={handleSignupOrLogin}
         />
       ) : (
-        <SignupForm 
-          message={message} 
-          setMessage={setMessage} 
+        <SignupForm
+          message={message}
+          setMessage={setMessage}
           handleSignupOrLogin={handleSignupOrLogin}
         />
       )}
