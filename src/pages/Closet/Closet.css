@@ -1,8 +1,14 @@
 
 .closet {
-  padding: 20px;
-  background-color: #f5f5f500; 
-  min-height: 100vh;
+  font-family: Arial, sans-serif;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    box-shadow: 0 2px 4px #5B382D;
+    border-radius: 8px;
+    background-color: #F7F2EF; 
+    color: #2D2E25; 
+    
 }
 
 .closet h1 {
@@ -10,7 +16,7 @@
   text-align: center;
 }
 .closet h2 {
-  color: white;
+  color: #333;
   text-align: center;
 }
 

@@ -16,11 +16,17 @@ import VideoBackground from './VideoBackground'
 function App() {
   const navigate = useNavigate();
   const [user, setUser] = useState(authService.getUser());
+  const [playVideoInReverse, setPlayVideoInReverse] = useState(false);
 
   function handleLogout() {
     authService.logout();
     setUser(null);
-    navigate('/');
+    setPlayVideoInReverse(true); 
+    const videoPlaybackTime = 5000
+    setTimeout(() => {
+      setPlayVideoInReverse(false);
+      navigate('/');
+    }, videoPlaybackTime);
   }
   
   function handleSignupOrLogin() {
@@ -35,10 +41,10 @@ function App() {
         <Route 
           path="/" 
           element={
-            <>
-              <VideoBackground /> 
+             <>
+              <VideoBackground playInReverse={playVideoInReverse} /> 
               <Landing handleSignupOrLogin={handleSignupOrLogin}/>
-        </>
+            </>
           }
         />
         <Route path="/profile" element={

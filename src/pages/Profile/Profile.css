@@ -1,16 +1,14 @@
-html, body {
+ body {
     margin: 0; 
     padding: 0; 
     background-image: url('src/assets/StaticCloset.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-}
-
-body {
     min-height: 100vh;
     overflow-y: auto;
 }
+
 
 
 .profile-container {
