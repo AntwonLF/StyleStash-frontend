@@ -11,31 +11,35 @@ import { useNavigate } from 'react-router-dom'
 import * as authService from './services/authService'
 
 import './App.css'
-import VideoBackground from './VideoBackground' // Make sure the path to this component is correct
+import VideoBackground from './VideoBackground'
 
 function App() {
-  const navigate = useNavigate()
-  const [user, setUser] = useState(authService.getUser())
+  const navigate = useNavigate();
+  const [user, setUser] = useState(authService.getUser());
 
   function handleLogout() {
-    authService.logout()
-    setUser(null)
-    navigate('/')
+    authService.logout();
+    setUser(null);
+    navigate('/');
   }
   
   function handleSignupOrLogin() {
-    setUser(authService.getUser())
-    navigate('/profile')
+    setUser(authService.getUser());
+    navigate('/profile');
   }
   
   return (
     <>
-      <VideoBackground /> {/* This will render the video background on all pages */}
       <NavBar user={user} handleLogout={handleLogout} />
       <Routes>
         <Route 
           path="/" 
-          element={<Landing handleSignupOrLogin={handleSignupOrLogin}/>}
+          element={
+            <>
+              <VideoBackground /> 
+              <Landing handleSignupOrLogin={handleSignupOrLogin}/>
+        </>
+          }
         />
         <Route path="/profile" element={
           <ProtectedRoute user={user}>
@@ -54,7 +58,7 @@ function App() {
         } />
       </Routes>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

@@ -46,7 +46,7 @@ const Closet = () => {
       setClosetItems(closetData.items);
 
       setSelectedCategory(null);
-    } catch (error) {   m
+    } catch (error) {   
       console.error('Error deleting item', error);
     }
   }
